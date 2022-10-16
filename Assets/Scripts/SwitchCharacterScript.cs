@@ -10,14 +10,8 @@ public class SwitchCharacterScript : MonoBehaviour
     public GameObject[] characters;
     GameObject currentCharacter;
 
-    [SerializeField] public GameObject followCamera; 
-    // private ThirdPersonController thirdPersonController;
-    // Transform characterRoot;
+    [SerializeField] public GameObject followCamera;
     int characterIndex;
-
-    void Awake() {
-        // thirdPersonController = currentCharacter.GetComponent<ThirdPersonController>();
-    }
 
     void Start() {
         characterIndex = 0;
@@ -35,18 +29,12 @@ public class SwitchCharacterScript : MonoBehaviour
             followCamera.GetComponent<CinemachineVirtualCamera>().LookAt = characters[characterIndex].transform.GetChild(0);
             followCamera.GetComponent<CinemachineVirtualCamera>().Follow = characters[characterIndex].transform.GetChild(0);
 
-            // Console.WriteLine(currentCharacter);
-            // currentCharacter.GetComponent<Animator>().enabled = false;
             currentCharacter.GetComponent<CharacterController>().enabled = false;
-            // currentCharacter.GetComponent<ThirdPersonController>().enabled = false;
             currentCharacter.GetComponent<PlayerInput>().enabled = false;
 
-            // characters[characterIndex].GetComponent<Animator>().enabled = true;
             characters[characterIndex].GetComponent<CharacterController>().enabled = true;
-            // characters[characterIndex].GetComponent<ThirdPersonController>().enabled = true;
             characters[characterIndex].GetComponent<PlayerInput>().enabled = true;
 
-            // characterRoot = characters[characterIndex].transform.GetChild(0);
             currentCharacter = characters[characterIndex];
         }
     }
