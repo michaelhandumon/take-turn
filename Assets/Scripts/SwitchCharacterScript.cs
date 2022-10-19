@@ -16,6 +16,8 @@ public class SwitchCharacterScript : MonoBehaviour
     void Start() {
         characterIndex = 0;
         currentCharacter = characters[0];
+        Debug.Log(GameManager.instance.fireboyName);
+        Debug.Log(GameManager.instance.watergirlName);
     }
 
     void Update () {
