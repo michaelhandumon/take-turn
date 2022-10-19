@@ -71,18 +71,16 @@ public class GameManager : MonoBehaviour
     }
 
     void handleGameOver() {
-        Debug.Log('Game Over');
+        Debug.Log("Game Over");
     }
-
     void handleVictory() {
-        Debug.Log('W');
+        Debug.Log("W");
     }
-
     void handleContinue() {
-        Debug.Log('Continue');
+        Debug.Log("Continue");
     }
 
     void handleNone() {
-        Debug.Log('None State')
+        Debug.Log("None State");
     }
 }
