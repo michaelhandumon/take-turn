@@ -5,7 +5,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 
-public class FireElement : MonoBehaviour
+public class WaterElement : MonoBehaviour
 {
     CharacterController controller;
     PlayerInput playerInput;
@@ -16,10 +16,10 @@ public class FireElement : MonoBehaviour
     }
 
    private void OnTriggerEnter(Collider other) {
-        if (other.GetComponent<Water>() != null) {
+        if (other.GetComponent<Lava>() != null) {
             playerInput.enabled = false;
             controller.enabled = false;
-            transform.position = other.GetComponent<Water>().spawnPoint.transform.position;
+            transform.position = other.GetComponent<Lava>().spawnPoint.transform.position;
 
             playerInput.enabled = true;
             controller.enabled = true;

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class SwitchCharacterScript : MonoBehaviour
 {
+    [Header("Switch Characters")]
     public GameObject[] characters;
     GameObject currentCharacter;
 
