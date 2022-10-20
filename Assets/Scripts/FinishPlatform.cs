@@ -3,8 +3,7 @@ using System.Collections;
 
 public class FinishPlatform : MonoBehaviour
 {
-
-  public string playerTag;
+  public string playerName;
 
   void Update()
   {
@@ -17,18 +16,52 @@ public class FinishPlatform : MonoBehaviour
 
   void OnTriggerEnter(Collider trig)
   {
+    Debug.Log("player name: " + trig.gameObject.name);
+    Debug.Log(trig.gameObject.name);
 
-    Debug.Log(trig.gameObject.tag);
-    // Debug.Log(playerTag);
-    if (trig.gameObject.tag == playerTag)
+    if (trig.gameObject.name == playerName)
     {
-      Debug.Log("prepare or trigger win");
-    }
+      if (playerName == "PlayerOne")
+      {
+        if (GameManager.instance.fireboyFinished)
+        {
+          GameManager.instance.UpdateGameState(GameState.Victory);
+        }
+        else
+        {
+          Debug.Log("finished ka na imo ya");
+          GameManager.instance.watergirlFinished = true;
 
+        }
+      }
+
+      if (playerName == "PlayerTwo")
+      {
+        if (GameManager.instance.watergirlFinished)
+        {
+          GameManager.instance.UpdateGameState(GameState.Victory);
+        }
+        else
+        {
+          Debug.Log("finished ka na");
+          GameManager.instance.fireboyFinished = true;
+
+        }
+      }
+    }
   }
 
   void OnTriggerExit(Collider trig)
   {
-    Debug.Log("Exited");
+    if (playerName == "PlayerOne")
+    {
+      GameManager.instance.watergirlFinished = false;
+    }
+
+
+    if (playerName == "PlayerTwo" && GameManager.instance.watergirlFinished)
+    {
+      GameManager.instance.fireboyFinished = false;
+    }
   }
 }

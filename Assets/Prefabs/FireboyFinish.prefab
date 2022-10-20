@@ -5107,4 +5107,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54838ee898b4b704f8c4aede9cea7bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Fireboy
+  playerName: PlayerTwo

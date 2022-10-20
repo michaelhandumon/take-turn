@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     public GameState state;
 
+    public bool watergirlFinished = false;
+    public bool fireboyFinished = false;
+
+
     public static event Action<GameState> OnGameStatesChanged;
 
     void Awake()

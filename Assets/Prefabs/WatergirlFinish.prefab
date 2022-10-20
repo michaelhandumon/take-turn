@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3636118964775218996}
   - component: {fileID: 3636118964786845206}
   - component: {fileID: 3636118964786845204}
-  - component: {fileID: 3636118964356319655}
+  - component: {fileID: 4169649817754128682}
   m_Layer: 0
   m_Name: WatergirlFinish
   m_TagString: Untagged
@@ -5095,7 +5095,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3636118964356319655
+--- !u!114 &4169649817754128682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5107,4 +5107,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54838ee898b4b704f8c4aede9cea7bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Watergirl
+  playerName: PlayerOne
