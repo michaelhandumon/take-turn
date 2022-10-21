@@ -10,6 +10,18 @@ public class FireElement : MonoBehaviour
     CharacterController controller;
     PlayerInput playerInput;
 
+    public bool isInteracting;
+
+    void Start() {
+        isInteracting = false;
+    }
+
+    IEnumerator Interact()
+    {   
+        yield return new WaitForSeconds(5);
+        isInteracting = false;
+    }
+
     private void Awake() {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -34,6 +46,13 @@ public class FireElement : MonoBehaviour
 
             playerInput.enabled = true;
             controller.enabled = true;
+        }
+    }
+
+    void Update() {
+        if(Input.GetButtonDown("Interact")){
+            isInteracting = true;
+            StartCoroutine(Interact());
         }
     }
 

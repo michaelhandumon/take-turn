@@ -10,6 +10,18 @@ public class WaterElement : MonoBehaviour
     CharacterController controller;
     PlayerInput playerInput;
 
+    public bool isInteracting;
+
+    void Start() {
+        isInteracting = false;
+    }
+
+    IEnumerator Interact()
+    {   
+        yield return new WaitForSeconds(5);
+        isInteracting = false;
+    }
+
     private void Awake() {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -19,6 +31,7 @@ public class WaterElement : MonoBehaviour
         if (other.GetComponent<Lava>() != null) {
             playerInput.enabled = false;
             controller.enabled = false;
+            
             transform.position = other.GetComponent<Lava>().spawnPoint.transform.position;
             GameManager.instance.UpdateGameState(GameState.GameOver);
 
@@ -34,6 +47,13 @@ public class WaterElement : MonoBehaviour
 
             playerInput.enabled = true;
             controller.enabled = true;
+        }
+    }
+
+    void Update() {
+        if(Input.GetButtonDown("Interact")){
+            isInteracting = true;
+            StartCoroutine(Interact());
         }
     }
 

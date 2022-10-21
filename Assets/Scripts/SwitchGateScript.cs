@@ -18,8 +18,8 @@ public class SwitchGateScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
+        if (other.GetComponent<FireElement>() != null || other.GetComponent<WaterElement>() != null)
+        {   
             GetComponent<MeshRenderer>().material.color = Color.green;
             position =
                 new Vector3(transform.position.x, 13f, transform.position.z);
@@ -32,7 +32,7 @@ public class SwitchGateScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.GetComponent<FireElement>() != null || other.GetComponent<WaterElement>() != null)
         {
             GetComponent<MeshRenderer>().material.color = Color.red;
             position =
