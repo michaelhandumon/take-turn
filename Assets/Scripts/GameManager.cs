@@ -26,6 +26,16 @@ public class GameManager : MonoBehaviour
 
     public bool fireboyFinished = false;
 
+    [SerializeField] AudioSource startMusic;
+
+    [SerializeField] AudioSource gameMusic;
+
+    [SerializeField] AudioSource gameOverMusic;
+
+    [SerializeField] AudioSource adMusic;
+
+    [SerializeField] AudioSource victoryMusic;
+
     public static event Action<GameState> OnGameStatesChanged;
 
     void Awake()
@@ -37,6 +47,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateGameState(GameState.None);
+        startMusic.Play();
     }
 
     void Update()
@@ -64,6 +75,7 @@ public class GameManager : MonoBehaviour
             case GameState.None:
                 break;
             case GameState.Continue:
+                handleContinue();
                 break;
             default:
                 break;
@@ -78,21 +90,54 @@ public class GameManager : MonoBehaviour
 
     void handleGameOver()
     {
+        playGameoverMusic();
         Debug.Log("Game Over");
     }
 
     void handleVictory()
     {
+        gameMusic.Stop();
+        victoryMusic.Play();
         Debug.Log("Victory");
     }
 
     void handleContinue()
     {
+        adMusic.Stop();
+        gameMusic.Play();
         Debug.Log("Continue");
     }
 
     void handleNone()
     {
         Debug.Log("None State");
+    }
+
+    public void playGameMusic() {
+        startMusic.Stop();
+        gameMusic.Play();
+    }
+
+    public void playGameoverMusic() {
+        gameMusic.Stop();
+        gameOverMusic.Play();
+    }
+
+    public void playAdMusic() {
+        gameOverMusic.Stop();
+        adMusic.Play();
+    }
+
+    public void changeNewgameMusic() {
+        victoryMusic.Stop();
+        // startMusic.Play();
+    }
+
+    public void changeAdToNewGameMusic() {
+        adMusic.Stop();
+    }
+
+    public void stopGameOverMusic() {
+        gameOverMusic.Stop();
     }
 }

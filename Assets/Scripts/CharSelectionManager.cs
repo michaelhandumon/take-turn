@@ -26,6 +26,7 @@ public class CharSelectionManager : MonoBehaviour
         GameManager
             .instance
             .setCharNames(fireboyInput.text, watergirlInput.text);
+        GameManager.instance.playGameMusic();
     }
 
     public void handleStart()

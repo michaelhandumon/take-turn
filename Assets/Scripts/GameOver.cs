@@ -84,6 +84,8 @@ public class GameOver : MonoBehaviour
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);
+        GameManager.instance.UpdateGameState(GameState.None);
+        GameManager.instance.stopGameOverMusic();
     }
 
     public void WatchAd()
@@ -91,6 +93,7 @@ public class GameOver : MonoBehaviour
         GameOverScreen.gameObject.SetActive(false);
         AdPanel.gameObject.SetActive(true);
         startAdTimer = true;
+        GameManager.instance.playAdMusic();
     }
 
     public void ContinueGame()
