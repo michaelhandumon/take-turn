@@ -13,6 +13,7 @@ public class CharSelectionManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.UpdateGameState(GameState.None);
     }
 
     // Update is called once per frame

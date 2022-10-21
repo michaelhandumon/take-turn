@@ -20,6 +20,7 @@ public class WaterElement : MonoBehaviour
             playerInput.enabled = false;
             controller.enabled = false;
             transform.position = other.GetComponent<Lava>().spawnPoint.transform.position;
+            GameManager.instance.UpdateGameState(GameState.GameOver);
 
             playerInput.enabled = true;
             controller.enabled = true;
@@ -29,6 +30,7 @@ public class WaterElement : MonoBehaviour
             playerInput.enabled = false;
             controller.enabled = false;
             transform.position = other.GetComponent<Poison>().spawnPoint.transform.position;
+            GameManager.instance.UpdateGameState(GameState.GameOver);
 
             playerInput.enabled = true;
             controller.enabled = true;

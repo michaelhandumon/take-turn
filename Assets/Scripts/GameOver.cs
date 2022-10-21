@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-
 
 public class GameOver : MonoBehaviour
 {
@@ -47,6 +46,18 @@ public class GameOver : MonoBehaviour
     private void GameOverManagerOnGameStateChanged(GameState state)
     {
         GameOverScreen.gameObject.SetActive(state == GameState.GameOver);
+        if (state == GameState.GameOver)
+        {
+            currentTime = skipAdTime;
+            countdownText.gameObject.SetActive(true);
+            ContinueButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            GameOverScreen.gameObject.SetActive(false);
+            AdPanel.gameObject.SetActive(false);
+            ContinueButton.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -85,7 +96,6 @@ public class GameOver : MonoBehaviour
     public void ContinueGame()
     {
         startAdTimer = false;
-        AdPanel.gameObject.SetActive(false);
         GameManager.instance.UpdateGameState(GameState.Continue);
     }
 }

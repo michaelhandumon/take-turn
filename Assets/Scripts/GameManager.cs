@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     public GameState state;
 
+    public bool watergirlFinished = false;
+
+    public bool fireboyFinished = false;
+
     public static event Action<GameState> OnGameStatesChanged;
 
     void Awake()
@@ -47,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateGameState(GameState newState)
     {
-        Debug.Log(newState);
+        Debug.Log (newState);
         state = newState;
         switch (state)
         {
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour
                 handleGameOver();
                 break;
             case GameState.Victory:
+                handleVictory();
                 break;
             case GameState.None:
                 break;
@@ -71,17 +76,23 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    void handleGameOver() {
+    void handleGameOver()
+    {
         Debug.Log("Game Over");
     }
-    void handleVictory() {
-        Debug.Log("W");
+
+    void handleVictory()
+    {
+        Debug.Log("Victory");
     }
-    void handleContinue() {
+
+    void handleContinue()
+    {
         Debug.Log("Continue");
     }
 
-    void handleNone() {
+    void handleNone()
+    {
         Debug.Log("None State");
     }
 }

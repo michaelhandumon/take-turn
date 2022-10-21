@@ -20,6 +20,7 @@ public class FireElement : MonoBehaviour
             playerInput.enabled = false;
             controller.enabled = false;
             transform.position = other.GetComponent<Water>().spawnPoint.transform.position;
+            GameManager.instance.UpdateGameState(GameState.GameOver);
 
             playerInput.enabled = true;
             controller.enabled = true;
@@ -29,6 +30,7 @@ public class FireElement : MonoBehaviour
             playerInput.enabled = false;
             controller.enabled = false;
             transform.position = other.GetComponent<Poison>().spawnPoint.transform.position;
+            GameManager.instance.UpdateGameState(GameState.GameOver);
 
             playerInput.enabled = true;
             controller.enabled = true;

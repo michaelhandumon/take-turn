@@ -23,6 +23,14 @@ public class SwitchCharacterScript : MonoBehaviour
 
     void Update () {
         if(Input.GetButtonDown("Fire1")){
+            if (GameManager.instance.state == GameState.Victory) {
+                return;
+            }
+
+            if (GameManager.instance.state == GameState.GameOver) {
+                return;
+            }
+
             characterIndex++;
             
             if(characterIndex == characters.Length){
